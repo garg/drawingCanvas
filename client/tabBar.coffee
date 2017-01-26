@@ -36,36 +36,4 @@ RocketChat.callbacks.add 'enter-room', ->
 	, 500
 , RocketChat.callbacks.priority.HIGH, 'open-flex'
 
-###
 
-	RocketChat.callbacks.add 'enter-room', ->
-        _.each(PaintChat.tools.list, (tool, idx) -> tool.index.set(idx))
-        #Tracker.autorun ->
-          #if RocketChat.TabBar.getTemplate == 'drawingBoardMain' and Session.equals('drawingBoardArea', true)
-            #PaintChat.drawingCanvas = Blaze.render(Template.drawingCanvas, $('#drawingCanvas')[0])
-            #if Session.equals('drawingBoardArea', true)
-            #Session.get('drawingBoardArea')
-            #PaintChat.drawingCanvas = Blaze.render(Template.drawingCanvas, $('#drawingCanvas')[0])
-        console.log "entering room 1"
-        PaintChat.tools.count.set(PaintChat.tools.list.length)
-      , RocketChat.callbacks.priority.MEDIUM, 'test-message'
-
-	RocketChat.callbacks.add 'enter-room', ->
-		console.log "entering room 2"
-		Session.set('joinTime', Date.now())
-		Presences.find({roomId: Session.get('openedRoom')})
-		Presences.findOne({roomId: Session.get('openedRoom'), userId: Meteor.userId()})
-
-
-	RocketChat.callbacks.add 'roomExit', ->
-		if PaintChat.drawingCanvas
-			Blaze.remove(PaintChat.drawingCanvas)
-			console.log 'drawingCanvas destroyed on roomExit'
-		console.log "exiting room"
-	, RocketChat.callbacks.priority.MEDIUM, 'exit-room-paint'
-
-	RocketChat.callbacks.add 'roomExit', ->
-		console.log "exiting room"
-	, RocketChat.callbacks.priority.MEDIUM, 'exit-room-paint'
-
-###
