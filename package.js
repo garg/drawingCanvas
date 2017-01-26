@@ -46,8 +46,7 @@ Package.onUse(function(api) {
 		'server/collections/strokes.js',
 		'server/methods/saveImage.js',
 		'server/methods/saveStroke.js',
-		'server/methods/saveThumb.js',
-		'server/s3.js'
+		'server/methods/saveThumb.js'
 	],
 	['server']);
 
